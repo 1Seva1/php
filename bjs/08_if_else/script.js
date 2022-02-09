@@ -13,13 +13,16 @@ answerField.innerText = `Вы загадали число ${answerNumber }?`;
 
 //кнопка Заново
 document.querySelector('#btnRetry').addEventListener('click', function () {
-    //minValue = 0;
-    //maxValue = 100;
-    //orderNumber = 0;
-    minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-    maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
-    answerNumber  = Math.floor((minValue + maxValue) / 2);
-    orderNumber = 1;
+    if (gameRun == false) {
+        minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
+        maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+        answerNumber  = Math.floor((minValue + maxValue) / 2);
+        orderNumber = 1;  
+        orderNumberField.innerText = orderNumber;
+        answerField.innerText = `Вы загадали число ${answerNumber }?`;
+        gameRun = true; 
+    }
+    
 })
 
 //кнопка Больше
@@ -38,7 +41,20 @@ document.querySelector('#btnOver').addEventListener('click', function () {
             answerNumber  = Math.floor((minValue + maxValue) / 2);
             orderNumber++;
             orderNumberField.innerText = orderNumber;
-            answerField.innerText = `Вы загадали число ${answerNumber }?`;
+            const phraseRandom = Math.round( Math.random()*2);
+            switch (phraseRandom) {
+                case 0:
+                    answerPhrase = `Взможно, это число ${answerNumber }?`;
+                    break;
+                case 1:
+                    answerPhrase = `Может, это число ${answerNumber }?`;
+                    break;
+                case 2:
+                    answerPhrase = `Вы загадали число ${answerNumber }?`;
+                default:
+                    break;
+            }
+            answerField.innerText = answerPhrase;
         }
     }
 })
@@ -46,7 +62,7 @@ document.querySelector('#btnOver').addEventListener('click', function () {
 //кнопка Меньше
 document.querySelector('#btnLess').addEventListener('click', function () {
     if (gameRun){
-        if (minValue === maxValue){
+        if (minValue === maxValue || answerNumber == 0){
             const phraseRandom = Math.round( Math.random());
             const answerPhrase = (phraseRandom === 1) ?
                 `Вы загадали неправильное число!\n\u{1F914}` :
@@ -59,7 +75,20 @@ document.querySelector('#btnLess').addEventListener('click', function () {
             answerNumber  = Math.floor((minValue + maxValue) / 2);
             orderNumber++;
             orderNumberField.innerText = orderNumber;
-            answerField.innerText = `Вы загадали число ${answerNumber }?`;
+            const phraseRandom = Math.round( Math.random()*2);
+            switch (phraseRandom) {
+                case 0:
+                    answerPhrase = `Взможно, это число ${answerNumber }?`;
+                    break;
+                case 1:
+                    answerPhrase = `Может, это число ${answerNumber }?`;
+                    break;
+                case 2:
+                    answerPhrase = `Вы загадали число ${answerNumber }?`;
+                default:
+                    break;
+            }
+            answerField.innerText = answerPhrase;
         }
     }
 })
@@ -67,7 +96,20 @@ document.querySelector('#btnLess').addEventListener('click', function () {
 //кнопка Верно
 document.querySelector('#btnEqual').addEventListener('click', function () {
     if (gameRun){
-        answerField.innerText = `Я всегда угадываю\n\u{1F60E}`
+        const phraseRandom = Math.round( Math.random()*2);
+        switch (phraseRandom) {
+            case 0:
+                answerPhrase = `Я всегда угадываю!\n\u{1F60E}`;
+                break;
+            case 1:
+                answerPhrase = `Я знаю, я молодец!\n\u{1F60E}`;
+                break;
+            case 2:
+                answerPhrase = `Дааа! Я хорош!\n\u{1F60E}`;
+            default:
+                break;
+        }
+        answerField.innerText = answerPhrase;
         gameRun = false;
     }
 })
