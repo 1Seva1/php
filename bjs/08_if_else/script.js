@@ -124,7 +124,7 @@ document.querySelector('#btnEqual').addEventListener('click', function () {
         gameRun = false;
     }
 })
-//начало текстового представления
+//текстове представление числа
 function numberStr () {
     let getNumber = '';
     let getOne = '';
@@ -436,14 +436,15 @@ function numberStr () {
                         break;
                     }     
                     }
+    getNumber = getHundred + ' ' + getTen + ' '+getOne;
     if (getNumber.length > 20) {
         getNumber = answerNumber;
     }
     if (answerNumber < 0) {
         getNumber = 'минус ' + getHundred + ' ' + getTen + ' '+getOne;
     } else {
-        getNumber = getHundred + ' ' + getTen + ' '+getOne;  
+        return getNumber;  
     }
 return getNumber;    
 }
-//конец текстового представления
+
