@@ -8,82 +8,17 @@ if (isNaN(minValue) || isNaN(maxValue)) {
 (maxValue > 999) ? maxValue = 999 : maxValue;
 alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
 let answerNumber  = Math.floor((minValue + maxValue) / 2);
-//let getHundred = String(answerNumber%1000);
-//console.log(answerNumber%100-answerNumber%10);
 let orderNumber = 1;
 let gameRun = true;
+
+//начало текстового представления
 let getNumber = '';
 let getOne = '';
 let getTen = '';
 let getHundred = '';
-
-if (answerNumber > 101) {
-    getOne = answerNumber%10;
-    switch (getOne) {
-        case 1:
-            getOne = 'один';
-            break;
-        case 2:
-            getOne = 'два'
-            break;
-        case 3:
-            getOne = 'три'
-            break;
-        case 4:
-            getOne = 'четыре'
-            break;
-        case 5:
-            getOne = 'пять'
-            break;
-        case 6:
-            getOne = 'шесть'
-            break;
-        case 7:
-            getOne = 'семь'
-            break;
-        case 8:
-            getOne = 'восемь'
-            break;
-        case 9:
-            getOne = 'девять'
-            break;
-        default:
-            getOne = ''
-            break;
-    }
-    getNumber = getOne;
-    getTen = answerNumber%100 - answerNumber%10;
-    switch (getTen) {
-        case 20:
-            getTen = 'двадцать';
-            break;
-        case 30:
-            getTen = 'тридцать'
-            break;
-        case 40:
-            getTen = 'сорок'
-            break;
-        case 50:
-            getTen = 'пятьдесят'
-            break;
-        case 60:
-            getTen = 'шестьдесят'
-            break;
-        case 70:
-            getTen = 'семьдесят'
-            break;
-        case 80:
-            getTen = 'восемьдесят'
-            break;
-        case 90:
-            getTen = 'девяносто'
-            break;
-        default:
-            getTen = '';
-            break;
-    }
-    getNumber = getTen + ' '+getOne;
-    getHundred = answerNumber%1000-answerNumber%100;
+console.log(`Середина диапазона ${answerNumber}`);
+if (Math.abs(answerNumber%1000) > 101) {
+    getHundred = Math.abs(answerNumber%1000-answerNumber%100);
     switch (getHundred) {
         case 100:
             getHundred = 'сто';
@@ -116,164 +51,295 @@ if (answerNumber > 101) {
             getHundred = '';
             break;
     }
-    getNumber = getHundred + ' ' + getTen + ' '+getOne;
-    if (getNumber.length > 20) {
-        getNumber = answerNumber;
-    } 
-} else if (answerNumber > 20) {
-    getOne = answerNumber%10;
-    switch (getOne) {
-        case 1:
-            getOne = 'один';
-            break;
-        case 2:
-            getOne = 'два'
-            break;
-        case 3:
-            getOne = 'три'
-            break;
-        case 4:
-            getOne = 'четыре'
-            break;
-        case 5:
-            getOne = 'пять'
-            break;
-        case 6:
-            getOne = 'шесть'
-            break;
-        case 7:
-            getOne = 'семь'
-            break;
-        case 8:
-            getOne = 'восемь'
-            break;
-        case 9:
-            getOne = 'девять'
-            break;
-        default:
-            getOne = ''
-            break;
+    if (Math.abs(answerNumber%100) >= 20) {
+        getTen = Math.abs(answerNumber%100 - answerNumber%10);
+        switch (getTen) {
+            case 20:
+                getTen = 'двадцать';
+                break;
+            case 30:
+                getTen = 'тридцать'
+                break;
+            case 40:
+                getTen = 'сорок'
+                break;
+            case 50:
+                getTen = 'пятьдесят'
+                break;
+            case 60:
+                getTen = 'шестьдесят'
+                break;
+            case 70:
+                getTen = 'семьдесят'
+                break;
+            case 80:
+                getTen = 'восемьдесят'
+                break;
+            case 90:
+                getTen = 'девяносто'
+                break;
+            default:
+                getTen = '';
+                break;
+            }
+        getOne = Math.abs(answerNumber%10);
+        switch (getOne) {
+            case 1:
+                getOne = 'один';
+                break;
+            case 2:
+                getOne = 'два'
+                break;
+            case 3:
+                getOne = 'три'
+                break;
+            case 4:
+                getOne = 'четыре'
+                break;
+            case 5:
+                getOne = 'пять'
+                break;
+            case 6:
+                getOne = 'шесть'
+                break;
+            case 7:
+                getOne = 'семь'
+                break;
+            case 8:
+                getOne = 'восемь'
+                break;
+            case 9:
+                getOne = 'девять'
+                break;
+            default:
+                getOne = ''
+                break;
+            }
+    } else if (Math.abs(answerNumber%100) > 10){
+        getTen = Math.abs(answerNumber%100);
+        switch (getTen) {
+            case 11:
+                getTen = 'одиннадцать';
+                break;
+            case 12:
+                getTen = 'двенадцать'
+                break;
+            case 13:
+                getTen = 'тринадцать'
+                break;
+            case 14:
+                getTen = 'четырнадцать'
+                break;
+            case 15:
+                getTen = 'пятнадцать'
+                break;
+            case 16:
+                getTen = 'шестнадцать'
+                break;
+            case 17:
+                getTen = 'семнадцать'
+                break;
+            case 18:
+                getTen = 'восемнадцать'
+                break;
+            case 19:
+                getTen = 'девятнадцать'
+                break;
+            case 20:
+                getTen = 'двадцать'
+                break;
+            default:
+                getTen = '';
+                break;
+        }
+    } else {
+        getOne = Math.abs(answerNumber%10);
+        switch (getOne) {
+            case 1:
+                getOne = 'один';
+                break;
+            case 2:
+                getOne = 'два'
+                break;
+            case 3:
+                getOne = 'три'
+                break;
+            case 4:
+                getOne = 'четыре'
+                break;
+            case 5:
+                getOne = 'пять'
+                break;
+            case 6:
+                getOne = 'шесть'
+                break;
+            case 7:
+                getOne = 'семь'
+                break;
+            case 8:
+                getOne = 'восемь'
+                break;
+            case 9:
+                getOne = 'девять'
+                break;
+            default:
+                getOne = ''
+                break;
+        }    
     }
-    getNumber = getOne;
-    getTen = answerNumber%100 - answerNumber%10;
-    switch (getTen) {
-        case 20:
-            getTen = 'двадцать';
-            break;
-        case 30:
-            getTen = 'тридцать'
-            break;
-        case 40:
-            getTen = 'сорок'
-            break;
-        case 50:
-            getTen = 'пятьдесят'
-            break;
-        case 60:
-            getTen = 'шестьдесят'
-            break;
-        case 70:
-            getTen = 'семьдесят'
-            break;
-        case 80:
-            getTen = 'восемьдесят'
-            break;
-        case 90:
-            getTen = 'девяносто'
-            break;
-        default:
-            getTen = '';
-            break;
-    }
-    getNumber = getTen + ' '+getOne;
-} else if (answerNumber > 10) {
-    getTen = answerNumber%100;
-    switch (getTen) {
-        case 11:
-            getTen = 'одиннадцать';
-            break;
-        case 12:
-            getTen = 'двенадцать'
-            break;
-        case 13:
-            getTen = 'тринадцать'
-            break;
-        case 14:
-            getTen = 'четырнадцать'
-            break;
-        case 15:
-            getTen = 'пятнадцать'
-            break;
-        case 16:
-            getTen = 'шестнадцать'
-            break;
-        case 17:
-            getTen = 'семнадцать'
-            break;
-        case 18:
-            getTen = 'восемнадцать'
-            break;
-        case 19:
-            getTen = 'девятнадцать'
-            break;
-        case 20:
-            getTen = 'двадцать'
-            break;
-        default:
-            getTen = '';
-            break;
-    }
-    getNumber = getTen;
-} else if (answerNumber > 0) {
-    getOne = answerNumber%10;
-    switch (getOne) {
-        case 1:
-            getOne = 'один';
-            break;
-        case 2:
-            getOne = 'два'
-            break;
-        case 3:
-            getOne = 'три'
-            break;
-        case 4:
-            getOne = 'четыре'
-            break;
-        case 5:
-            getOne = 'пять'
-            break;
-        case 6:
-            getOne = 'шесть'
-            break;
-        case 7:
-            getOne = 'семь'
-            break;
-        case 8:
-            getOne = 'восемь'
-            break;
-        case 9:
-            getOne = 'девять'
-            break;
-        case 0:
-            getOne = 'десять'
-            break;
-        default:
-            getOne = ''
-            break;
-    }
-    getNumber = getOne;
-} else if (answerNumber == 0) {
-    getNumber = '0';
-} else {
-   getNumber = 'минус'; 
+} else if (Math.abs(answerNumber%100) >= 20) {
+    getTen = Math.abs(answerNumber%100 - answerNumber%10);
+        switch (getTen) {
+            case 20:
+                getTen = 'двадцать';
+                break;
+            case 30:
+                getTen = 'тридцать'
+                break;
+            case 40:
+                getTen = 'сорок'
+                break;
+            case 50:
+                getTen = 'пятьдесят'
+                break;
+            case 60:
+                getTen = 'шестьдесят'
+                break;
+            case 70:
+                getTen = 'семьдесят'
+                break;
+            case 80:
+                getTen = 'восемьдесят'
+                break;
+            case 90:
+                getTen = 'девяносто'
+                break;
+            default:
+                getTen = '';
+                break;
+            }
+        getOne = Math.abs(answerNumber%10);
+        switch (getOne) {
+            case 1:
+                getOne = 'один';
+                break;
+            case 2:
+                getOne = 'два'
+                break;
+            case 3:
+                getOne = 'три'
+                break;
+            case 4:
+                getOne = 'четыре'
+                break;
+            case 5:
+                getOne = 'пять'
+                break;
+            case 6:
+                getOne = 'шесть'
+                break;
+            case 7:
+                getOne = 'семь'
+                break;
+            case 8:
+                getOne = 'восемь'
+                break;
+            case 9:
+                getOne = 'девять'
+                break;
+            default:
+                getOne = ''
+                break;
+            }
+        } else if (Math.abs(answerNumber%100) > 10){
+            getTen = Math.abs(answerNumber%100);
+            switch (getTen) {
+                case 11:
+                    getTen = 'одиннадцать';
+                    break;
+                case 12:
+                    getTen = 'двенадцать'
+                    break;
+                case 13:
+                    getTen = 'тринадцать'
+                    break;
+                case 14:
+                    getTen = 'четырнадцать'
+                    break;
+                case 15:
+                    getTen = 'пятнадцать'
+                    break;
+                case 16:
+                    getTen = 'шестнадцать'
+                    break;
+                case 17:
+                    getTen = 'семнадцать'
+                    break;
+                case 18:
+                    getTen = 'восемнадцать'
+                    break;
+                case 19:
+                    getTen = 'девятнадцать'
+                    break;
+                case 20:
+                    getTen = 'двадцать'
+                    break;
+                default:
+                    getTen = '';
+                    break;
+                }
+        } else {
+            getOne = Math.abs(answerNumber%10);
+            switch (getOne) {
+                case 1:
+                    getOne = 'один';
+                    break;
+                case 2:
+                    getOne = 'два'
+                    break;
+                case 3:
+                    getOne = 'три'
+                    break;
+                case 4:
+                    getOne = 'четыре'
+                    break;
+                case 5:
+                    getOne = 'пять'
+                    break;
+                case 6:
+                    getOne = 'шесть'
+                    break;
+                case 7:
+                    getOne = 'семь'
+                    break;
+                case 8:
+                    getOne = 'восемь'
+                    break;
+                case 9:
+                    getOne = 'девять'
+                    break;
+                default:
+                    getOne = '0'
+                    break;
+                }     
+                }
+if (getNumber.length > 20) {
+    getNumber = answerNumber;
 }
-console.log(getNumber);   
+if (answerNumber < 0) {
+    getNumber = 'минус ' + getHundred + ' ' + getTen + ' '+getOne;
+} else {
+    getNumber = getHundred + ' ' + getTen + ' '+getOne;  
+}
+ 
+console.log(getNumber);      
+//конец текстового представления
 
 const orderNumberField = document.querySelector('#orderNumberField');
 const answerField = document.querySelector('#answerField');
 
 orderNumberField.innerText = orderNumber;
-answerField.innerText = `Вы загадали число ${answerNumber }?`;
+answerField.innerText = `Вы загадали число ${getNumber}?`;
 
 //кнопка Заново
 document.querySelector('#btnRetry').addEventListener('click', function () {
