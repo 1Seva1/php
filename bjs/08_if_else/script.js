@@ -1,28 +1,61 @@
-let minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-let maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
-if (isNaN(minValue) || isNaN(maxValue)) {
-    minValue = 0;
-    maxValue = 100;
-}
-(minValue < -999) ? minValue = -999 : minValue;
-(maxValue > 999) ? maxValue = 999 : maxValue;
-alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
+const orderNumberField = document.querySelector('#orderNumberField');
+const answerField = document.querySelector('#answerField');
+const inputMinValue = document.querySelector('#inputMinValue');
+const inputMaxValue = document.querySelector('#inputMaxValue');
+
+let minValue = 0;
+let maxValue = 100;
 let answerNumber  = Math.floor((minValue + maxValue) / 2);
 let orderNumber = 1;
 let gameRun = true;
 
-const orderNumberField = document.querySelector('#orderNumberField');
-const answerField = document.querySelector('#answerField');
-
 orderNumberField.innerText = orderNumber;
-answerField.innerText = `Вы загадали число ${numberStr()}?`;
+answerField.innerText = '';
+
+function getminValue (){
+    minValue = parseInt(inputMinValue.value);
+    (minValue < -999) ? minValue = -999 : minValue;
+    console.log(minValue);
+    if (isNaN(minValue)) {
+        minValue = 0;
+    }
+}
+function getmaxValue (){
+    maxValue = parseInt(inputMaxValue.value);
+    (maxValue > 999) ? maxValue = 999 : maxValue;
+    if (isNaN(maxValue)) {
+        maxValue = 100;
+    }
+    document.querySelector('#alert').classList.remove('collapse');
+    document.querySelector('#alert').innerHTML = `Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`;
+    console.log(maxValue);
+}
+function start (){
+    if (isNaN(minValue) || isNaN(maxValue)) {
+        minValue = 0;
+        maxValue = 100;
+    }
+    answerNumber  = Math.floor((minValue + maxValue) / 2);
+    orderNumber = 1;
+    orderNumberField.innerText = orderNumber;
+    answerField.innerText = `Вы загадали число ${numberStr()}?`;
+    gameRun = true;
+    console.log(answerNumber);
+    document.querySelector('#minValue').classList.add('collapse');
+    document.querySelector('#maxValue').classList.add('collapse');
+    document.querySelector('#start').classList.add('collapse');
+    document.querySelector('#alert').classList.add('collapse');
+}
 
 //кнопка Заново
 document.querySelector('#btnRetry').addEventListener('click', function () {
     if (gameRun == false) {
-        minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-        maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
-        if (isNaN(minValue) || isNaN(maxValue)) {
+        document.querySelector('#minValue').classList.remove('collapse');
+        document.querySelector('#maxValue').classList.remove('collapse');
+        document.querySelector('#start').classList.remove('collapse');
+        //minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
+        //maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+        /*if (isNaN(minValue) || isNaN(maxValue)) {
             minValue = 0;
             maxValue = 100;
         }
@@ -31,7 +64,7 @@ document.querySelector('#btnRetry').addEventListener('click', function () {
         orderNumber = 1;  
         orderNumberField.innerText = orderNumber;
         answerField.innerText = `Вы загадали число ${numberStr() }?`;
-        gameRun = true; 
+        gameRun = true;*/ 
     }
     
 })
@@ -295,8 +328,11 @@ function numberStr () {
                 case 9:
                     getOne = 'девять'
                     break;
+                case 0:
+                    getOne = 'деcять'
+                    break;
                 default:
-                    getOne = ''
+                    getOne = '0'
                     break;
             }    
         }
@@ -431,14 +467,20 @@ function numberStr () {
                     case 9:
                         getOne = 'девять'
                         break;
+                    case 0:
+                        getOne = 'деcять'
+                        break;
                     default:
-                        getOne = '0'
+                        getOne = ''
                         break;
                     }     
                     }
     getNumber = getHundred + ' ' + getTen + ' '+getOne;
     if (getNumber.length > 20) {
         getNumber = answerNumber;
+    }
+    if (answerNumber == 0) {
+        getNumber = '0';
     }
     if (answerNumber < 0) {
         getNumber = 'минус ' + getHundred + ' ' + getTen + ' '+getOne;

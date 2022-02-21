@@ -11,29 +11,53 @@
 <body>
 <div class="container">
     <div class="row game-card align-items-center">
-        <div class="col col-md-4 offset-md-4">
-            <div class="card text-center">
-                <div class="card-header">
-                    <p class="m-0">Вопрос №<span id="orderNumberField">5</span></p>
+            <div class="col col-md-4 offset-md-4">
+                <div class="col" id="minValue">
+                    <label for="inputMinValue">Введите минимальное число для игры</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="inputMinValue" placeholder="Минимальное число для игры">
+                        <div class="input-group-prepend">
+                            <button onclick="getminValue()" class="btn btn-outline-secondary" type="submit">OK</button>
+                        </div>
+                    </div> 
                 </div>
-                <div class="card-body">
-                    <div class="row no-gutters">
-                        <div class="col">
-                            <h3 class="card-title m-0"><span id="answerField">Вы загадали число 5?</span></h3>
+                   
+                <div class="col" id="maxValue">
+                    <label for="inputMaxValue">Введите максимальное число для игры</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="inputMaxValue" placeholder="Максимальное число для игры">
+                        <div class="input-group-prepend">
+                            <button onclick="getmaxValue()" class="btn btn-outline-secondary" type="submit">OK</button>
+                        </div> 
+                    </div> 
+                </div>
+                
+                <div class="col text-center" id="start">
+                    <span class="collapse" id="alert"></span>
+                    <button onclick="start()" class="col btn btn-primary">Старт</button>
+                </div>
+                <div class="card text-center">
+                    <div class="card-header">
+                        <p class="m-0">Вопрос №<span id="orderNumberField">5</span></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <h3 class="card-title m-0"><span id="answerField">Вы загадали число 5?</span></h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <div class="btn-group">
-                        <button class="btn btn-outline-info" id="btnLess">&lt;<br>меньше</button>
-                        <button class="btn btn-outline-success btn-lg" id="btnEqual">Верно!</button>
-                        <button class="btn btn-outline-info" id="btnOver">больше<br>&gt;</button>
+                    <div class="card-body">
+                        <div class="btn-group">
+                            <button class="btn btn-outline-info" id="btnLess">&lt;<br>меньше</button>
+                            <button class="btn btn-outline-success btn-lg" id="btnEqual">Верно!</button>
+                            <button class="btn btn-outline-info" id="btnOver">больше<br>&gt;</button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-link" id="btnRetry">Заново</button>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <button class="btn btn-link" id="btnRetry">Заново</button>
-                </div>
-            </div>
         </div>
     </div>
 </div>
