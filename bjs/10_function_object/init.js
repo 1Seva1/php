@@ -6,6 +6,7 @@ window.onload = function()
     document.querySelector('#surnameOutput').innerText = initPerson.surName;
     document.querySelector('#genderOutput').innerText = initPerson.gender;
     document.querySelector('#birthYearOutput').innerText = initPerson.birthYear;
+    document.querySelector('#middleNameOutput').innerText = initPerson.middleName;
 
 };
 
