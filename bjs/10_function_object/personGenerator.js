@@ -83,31 +83,31 @@ const personGenerator = {
     professionMaleJson: `{
         "count": 10,
         "list": {     
-            "id_1": "Экономист",
-            "id_2": "Бухгалтер",
-            "id_3": "Юрист",
-            "id_4": "Николаевна",
-            "id_5": "Юрьевна",
-            "id_6": "Вячеславовна",
-            "id_7": "Сергеевна",
-            "id_8": "Васильевна",
-            "id_9": "Викторовна",
-            "id_10": "Павловна"
+            "id_1": "сантехник",
+            "id_2": "шахтер",
+            "id_3": "водитель",
+            "id_4": "программист",
+            "id_5": "военный",
+            "id_6": "пожарный",
+            "id_7": "лесоруб",
+            "id_8": "строитель",
+            "id_9": "ученый",
+            "id_10": "охранник"
         }
     }`,
     professionFemaleJson: `{
         "count": 10,
         "list": {     
-            "id_1": "Экономист",
-            "id_2": "Бухгалтер",
-            "id_3": "Владимировна",
-            "id_4": "Николаевна",
-            "id_5": "Юрьевна",
-            "id_6": "Вячеславовна",
-            "id_7": "Сергеевна",
-            "id_8": "Васильевна",
-            "id_9": "Викторовна",
-            "id_10": "Юрист"
+            "id_1": "бухгалтер",
+            "id_2": "стюардесса",
+            "id_3": "стилист",
+            "id_4": "маркетолог.",
+            "id_5": "фитнес-тренер",
+            "id_6": "педагог",
+            "id_7": "врач",
+            "id_8": "дизайнер",
+            "id_9": "повар",
+            "id_10": "программист"
         }
     }`,
 
@@ -156,6 +156,13 @@ const personGenerator = {
         }
     },
 
+    randomProf: function() {
+        if (this.person.gender == 'Мужчина') {
+            return this.randomValue(this.professionMaleJson);
+        } else {                                               //генерация профессии
+            return this.randomValue(this.professionFemaleJson);
+        }
+    },
 
     getPerson: function () {
         this.person = {};
@@ -164,6 +171,7 @@ const personGenerator = {
         this.person.firstName = this.randomFirstName();
         this.person.surName = this.randomSurname();
         this.person.middleName = this.randomMiddleName();
+        this.person.prof = this.randomProf();
         return this.person;
     }
 };
